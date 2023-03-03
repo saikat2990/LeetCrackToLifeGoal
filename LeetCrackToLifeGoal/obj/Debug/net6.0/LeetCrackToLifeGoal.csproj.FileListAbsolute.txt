@@ -1,0 +1,15 @@
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\bin\Debug\net6.0\LeetCrackToLifeGoal.exe
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\bin\Debug\net6.0\LeetCrackToLifeGoal.deps.json
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\bin\Debug\net6.0\LeetCrackToLifeGoal.runtimeconfig.json
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\bin\Debug\net6.0\LeetCrackToLifeGoal.dll
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\bin\Debug\net6.0\LeetCrackToLifeGoal.pdb
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\obj\Debug\net6.0\LeetCrackToLifeGoal.csproj.AssemblyReference.cache
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\obj\Debug\net6.0\LeetCrackToLifeGoal.GeneratedMSBuildEditorConfig.editorconfig
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\obj\Debug\net6.0\LeetCrackToLifeGoal.AssemblyInfoInputs.cache
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\obj\Debug\net6.0\LeetCrackToLifeGoal.AssemblyInfo.cs
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\obj\Debug\net6.0\LeetCrackToLifeGoal.csproj.CoreCompileInputs.cache
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\obj\Debug\net6.0\LeetCrackToLifeGoal.dll
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\obj\Debug\net6.0\refint\LeetCrackToLifeGoal.dll
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\obj\Debug\net6.0\LeetCrackToLifeGoal.pdb
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\obj\Debug\net6.0\LeetCrackToLifeGoal.genruntimeconfig.cache
+D:\LeetCrackToLifeGoal\LeetCrackToLifeGoal\LeetCrackToLifeGoal\obj\Debug\net6.0\ref\LeetCrackToLifeGoal.dll
