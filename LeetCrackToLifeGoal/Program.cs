@@ -10,40 +10,44 @@ namespace leetCrack
 
     public class Program
     {
-        public static void MoveZeroes(int[] nums)
+        public int FindCenter(int[][] edges)
         {
-            var countZero = 0;
-            var notZeros = new List<int>();
-            foreach (var num in nums)
+            var dict = new Dictionary<int, int>();
+            foreach (var edge in edges)
             {
-                if (num != 0)
+                if (dict.ContainsKey(edge[0]))
                 {
-                    notZeros.Add(num);
+                    dict[edge[0]]++;
                 }
                 else
                 {
-                    countZero++;
+                    dict.Add(edge[0],1);
+                }
+                if (dict.ContainsKey(edge[1]))
+                {
+                    dict[edge[1]]++;
+                }
+                else
+                {
+                    dict.Add(edge[1], 1);
                 }
             }
-
-            for (int i = 0; i < notZeros.Count; i++)
+            var allKeys = dict.Keys;
+            var maxVal = -1;
+            var maxFace = -1;
+            foreach (var key in allKeys)
             {
-                nums[i] = notZeros[i];
+                if (dict[key] > maxVal)
+                {
+                    maxVal = dict[key];
+                    maxFace = key;
+                }
             }
-
-            for (int i = notZeros.Count; i <notZeros.Count+countZero; i++)
-            {
-                nums[i] = 0;
-            }
-
-            foreach (var VARIABLE in nums)
-            {
-                Console.Write(VARIABLE);
-            }
+            return maxFace;
         }
         public static void Main(string[] args)
         {
-            MoveZeroes(new int[] { 1, 2, 3, 0, 6, 0, 9, 3 });
+           
         }
 
 
