@@ -10,11 +10,26 @@ namespace leetCrack
 
     public class Program
     {
-        
-       
         public static void Main(string[] args)
         {
             //AllPathsSourceTarget(new int[][] { new int[] { 4, 3, 1 }, new int[] { 3, 2, 4 }, new int[] {  }, new int[]{4} , new int[]{}});
+            //var data = FindSmallestSetOfVertices(3, new List<IList<int>>()
+            //{
+            //    new List<int>(){1,2},
+            //    new List<int>(){1,0},
+            //    new List<int>(){0,2},
+            //});
+            // data = FindSmallestSetOfVertices(5, new List<IList<int>>()
+            //{
+            //    new List<int>(){1,3},
+            //    new List<int>(){2,0},
+            //    new List<int>(){2,3},
+            //    new List<int>(){1,0},
+            //    new List<int>(){4,1},
+            //    new List<int>(){0,3},
+
+            //});
+             
         }
 
 
