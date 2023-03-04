@@ -10,7 +10,11 @@ namespace leetCrack
 
     public class Program
     {
-      public static void Main(string[] args)
+        public void MoveZeroes(int[] nums)
+        {
+
+        }
+        public static void Main(string[] args)
         {
             
         }
