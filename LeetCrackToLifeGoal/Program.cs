@@ -10,44 +10,47 @@ namespace leetCrack
 
     public class Program
     {
-        public int FindCenter(int[][] edges)
+        
+        public static void checkAnddAdd(int[][] graph, IList<IList<int>> final, IList<int> current,int index,int finish)
         {
-            var dict = new Dictionary<int, int>();
-            foreach (var edge in edges)
+           
+            if (graph[index].Length == 0 && finish==index)
             {
-                if (dict.ContainsKey(edge[0]))
+               IList<int> newList= new List<int>();
+               foreach (var val in current)
+               {
+                    newList.Add(val);
+               }
+                final.Add(newList);
+            }
+            else
+            {
+                foreach (var data in graph[index])
                 {
-                    dict[edge[0]]++;
-                }
-                else
-                {
-                    dict.Add(edge[0],1);
-                }
-                if (dict.ContainsKey(edge[1]))
-                {
-                    dict[edge[1]]++;
-                }
-                else
-                {
-                    dict.Add(edge[1], 1);
+                    current.Add(data);
+                    checkAnddAdd(graph, final, current, data, finish);
+                    current.RemoveAt(current.Count-1);
                 }
             }
-            var allKeys = dict.Keys;
-            var maxVal = -1;
-            var maxFace = -1;
-            foreach (var key in allKeys)
+
+        }
+
+        public static IList<IList<int>> AllPathsSourceTarget(int[][] graph)
+        {
+            var finalAnswer = new List<IList<int>>();
+            var finishPoint = graph.Length - 1;
+            foreach (var node in graph[0])
             {
-                if (dict[key] > maxVal)
-                {
-                    maxVal = dict[key];
-                    maxFace = key;
-                }
+                var current = new List<int>();
+                current.Add(0);
+                current.Add(node);
+                checkAnddAdd(graph, finalAnswer, current, node, finishPoint);
             }
-            return maxFace;
+            return finalAnswer;
         }
         public static void Main(string[] args)
         {
-           
+            AllPathsSourceTarget(new int[][] { new int[] { 4, 3, 1 }, new int[] { 3, 2, 4 }, new int[] {  }, new int[]{4} , new int[]{}});
         }
 
 
