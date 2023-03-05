@@ -30,9 +30,6 @@ namespace LeetCrackToLifeGoal
                     }
                 }
             }
-
-
-
         }
 
         public static bool CanVisitAllRooms(IList<IList<int>> edges)
