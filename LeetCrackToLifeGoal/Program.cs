@@ -9,31 +9,47 @@ namespace leetCrack
 
     public class Program
     {
-
-
-        public static int ClimbStairs(int n)
+        public class ListNode
         {
-            var f = new int[100];
-            if (n == 1) return 1;
-            if (n == 2) return 2;
-            var m = n;
-            f[0]=1; f[1]=2;
-        
-            var i = 2;
-            while (i<=n)
+             public int val;
+             public ListNode next; 
+             public ListNode(int val = 0, ListNode next = null)
+             {
+                this.val = val;
+                this.next = next;
+             }
+        }
+        public ListNode MergeKLists(ListNode[] lists)
+        {
+            if (lists.Length == 0) return null;
+            var newNode = new ListNode();
+            var ansNode = newNode;
+            var data = new List<int>();
+            foreach (var node in lists)
             {
-                f[i] = f[i - 1] + f[i - 2];
-                i++;
-               
+                var tempNode = node;
+                while (tempNode != null) 
+                {
+                    data.Add(tempNode.val);
+                    tempNode = tempNode.next;
+                }
             }
 
-            return f[n - 1];
+            if (data.Count == 0) return null;
+            data.Sort();
+            for (int i = 0; i < data.Count; i++)
+            {
+                newNode.val = data[i];
+                if (i != data.Count - 1)
+                    newNode.next = new ListNode();
+                newNode = newNode.next;
+            }
+            return ansNode;
         }
 
         public static void Main(string[] args)
         {
-            var data = ClimbStairs(6);
-            Console.WriteLine(data);
+            
         }
 
 

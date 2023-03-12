@@ -8,6 +8,23 @@ namespace LeetCrackToLifeGoal
 {
     internal class ClimbStairs
     {
+        public static int ClimbStairsss(int n)
+        {
+            var f = new int[100];
+            if (n == 1) return 1;
+            if (n == 2) return 2;
+            f[0] = 1; f[1] = 2;
+
+            var i = 2;
+            while (i <= n)
+            {
+                f[i] = f[i - 1] + f[i - 2];
+                i++;
+
+            }
+
+            return f[n - 1];
+        }
         public static void backTrack(List<int> currentArray, int n, List<List<int>> answer)
         {
             if (currentArray.Sum() == n)
