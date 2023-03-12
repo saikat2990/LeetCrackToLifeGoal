@@ -50,7 +50,7 @@ namespace LeetCrackToLifeGoal
 
         }
 
-        public static int ClimbStairs(int n)
+        public static int ClimbStairss(int n)
         {
             var current = new List<int>();
             var answer = new List<List<int>>();
