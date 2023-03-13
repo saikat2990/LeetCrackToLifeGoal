@@ -1,30 +1,29 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Xml.Linq;
+using System.Threading.Tasks;
 
-namespace leetCrack
+namespace LeetCrackToLifeGoal
 {
-
-    public class Program
-    { 
+    public class IsSymmetrics
+    {
         public class TreeNode
         {
-             public int val;
-             public TreeNode left;
-             public TreeNode right;
-             public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
-             {
+            public int val;
+            public TreeNode left;
+            public TreeNode right;
+            public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
+            {
                 this.val = val;
                 this.left = left;
                 this.right = right;
-             }
+            }
         }
 
         public void traverseRight(TreeNode node, List<TreeNode> rightAnswer)
         {
-           
+
             if (node != null)
             {
                 rightAnswer.Add(node);
@@ -36,7 +35,7 @@ namespace leetCrack
                 rightAnswer.Add(null);
             }
         }
-        public void traverseLeft(TreeNode node,List<TreeNode> leftAnswer)
+        public void traverseLeft(TreeNode node, List<TreeNode> leftAnswer)
         {
             if (node != null)
             {
@@ -58,7 +57,7 @@ namespace leetCrack
             traverseRight(root.right, rightAnswer);
             for (int i = 0; i < leftAnswer.Count; i++)
             {
-                if(leftAnswer[i]==null && rightAnswer[i]==null)
+                if (leftAnswer[i] == null && rightAnswer[i] == null)
                     continue;
                 if (leftAnswer[i] != null && rightAnswer[i] == null)
                     return false;
@@ -71,12 +70,5 @@ namespace leetCrack
             }
             return true;
         }
-        public static void Main(string[] args)
-        {
-            
-        }
-
-
     }
-   
 }
