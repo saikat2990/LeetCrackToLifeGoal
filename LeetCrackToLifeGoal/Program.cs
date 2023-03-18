@@ -1,22 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Reflection.Emit;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Xml.Linq;
-using static LeetCrackToLifeGoal.MergeKListss;
-
-namespace leetCrack
+﻿namespace leetCrack
 {
 
     public class Program
     {
-       
-
         public static void Main(string[] args)
         {
-            
 
+         
         }
 
 
