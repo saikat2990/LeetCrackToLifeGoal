@@ -3,88 +3,25 @@
 
     public class Program
     {
-        /**
-  * Definition for a binary tree node.
-  * public class TreeNode {
-  *     public int val;
-  *     public TreeNode left;
-  *     public TreeNode right;
-  *     public TreeNode(int val=0, TreeNode left=null, TreeNode right=null) {
-  *         this.val = val;
-  *         this.left = left;
-  *         this.right = right;
-  *     }
-  * }
-  */
-        public class Solution
+        public TreeNode BuildTree(int[] preorder, int[] inorder)
         {
-
-            public IList<IList<int>> ZigzagLevelOrder(TreeNode root)
+            if (inorder.Length == 0 || preorder.Length == 0)
             {
-                var levelList = new Dictionary<int, List<int>>();
-                var answer = new List<IList<int>>();
-                if (root == null) return answer;
-                Queue<TreeNode> data = new Queue<TreeNode>();
-                var tag = 0;
-                data.Enqueue(root);
-
-                while (data.Count > 0)
-                {
-
-                    levelList.Add(tag, new List<int>());
-                    var listData = new List<TreeNode>();
-                    while (data.Count > 0)
-                    {
-                        var chData = data.Dequeue();
-                        levelList[tag].Add(chData.val);
-                        listData.Add(chData);
-                    }
-
-                    var reVerseData = new List<TreeNode>();
-                    for (int i = listData.Count - 1; i >= 0; i--)
-                    {
-                        reVerseData.Add(listData[i]);
-                    }
-                    listData.Clear();
-                    foreach (var rData in reVerseData)
-                    {
-                        listData.Add(rData);
-                    }
-                    if (tag % 2 == 1)
-                    {
-                        foreach (var lData in listData)
-                        {
-                            if (lData.left != null) data.Enqueue(lData.left);
-                            if (lData.right != null) data.Enqueue(lData.right);
-
-                        }
-                    }
-                    else
-                    {
-                        foreach (var lData in listData)
-                        {
-                            if (lData.right != null) data.Enqueue(lData.right);
-                            if (lData.left != null) data.Enqueue(lData.left);
-
-
-                        }
-                    }
-                    tag++;
-                }
-                foreach (var ll in levelList.Keys)
-                {
-
-                    foreach (var VARIABLE in levelList[ll])
-                    {
-                        Console.Write(VARIABLE + " ");
-                    }
-                    Console.WriteLine();
-                    answer.Add(levelList[ll]);
-                }
-
-                return answer;
+                return null;
             }
+
+            var root = preorder[0];
+            var node = new TreeNode(root);
+            var mid = Array.IndexOf(inorder, root);
+            var leftInorder = inorder.Skip(0).Take(mid).ToArray();
+            var rightInoder = inorder.Skip(mid+1).Take(inorder.Length - mid - 1).ToArray();
+            var leftPostorder = preorder.Skip(1).Take(mid+1).ToArray();
+            var rightPostorder = preorder.Skip(mid+1).Take(inorder.Length - mid - 1).ToArray();
+            node.left = BuildTree(leftPostorder,leftInorder );
+            node.right = BuildTree(rightPostorder,rightInoder);
+            return node;
         }
+
         public static void Main(string[] args)
         {
 
