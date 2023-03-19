@@ -7,7 +7,7 @@ using leetCrack;
 
 namespace LeetCrackToLifeGoal
 {
-    internal class TraverseAndFinds
+    internal class LevelOrderBottoms
     {
         public void TraverseAndFind(TreeNode node, Dictionary<int, List<int>> levelList, int level)
         {
@@ -25,17 +25,20 @@ namespace LeetCrackToLifeGoal
                 TraverseAndFind(node.right, levelList, level + 1);
             }
         }
-
-        public IList<IList<int>> LevelOrder(TreeNode root)
+        public IList<IList<int>> LevelOrderBottom(TreeNode root)
         {
             var levelList = new Dictionary<int, List<int>>();
             var answer = new List<IList<int>>();
             if (root == null) return answer;
             TraverseAndFind(root, levelList, 0);
-            foreach (var ll in levelList.Keys)
+            var allLevels = levelList.Keys.ToList();
+            allLevels.Sort();
+            allLevels.Reverse();
+            foreach (var level in allLevels)
             {
-                answer.Add(levelList[ll]);
+                answer.Add(levelList[level]);
             }
+
             return answer;
         }
     }
