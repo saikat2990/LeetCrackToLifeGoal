@@ -2,7 +2,7 @@
 
 namespace leetCrack
 {
-   
+
     public class Program
     {
 
@@ -59,9 +59,11 @@ namespace leetCrack
             return answerList;
         }
 
+
+
         public static void Main(string[] args)
         {
-            AllPossibleFBT(7);
+           
         }
 
 
