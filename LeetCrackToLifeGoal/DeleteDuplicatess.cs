@@ -1,48 +1,14 @@
-﻿
-
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using static LeetCrackToLifeGoal.MergeKListss;
 
-namespace leetCrack
+namespace LeetCrackToLifeGoal
 {
-
-    public class Program
+    internal class DeleteDuplicatess
     {
-
-        public int FindMin(int[] nums)
-        {
-            if (nums == null || nums.Length == 0) return 0;
-            var left = 0;
-            var right = nums.Length - 1;
-            var mid = 0;
-            while (left<right)
-            {
-                mid = left + (right - left) / 2;
-                if (nums[mid] < nums[right])
-                {
-                    right = mid;
-                }
-                else
-                {
-                    left = mid+1;
-                }
-            }
-            return nums[left];
-        }
-        public int FindPeakElement(int[] nums)
-        {
-            if (nums.Length == 1) return 0;
-            if (nums[0] > nums[1]) return 0;
-            if (nums[nums.Length - 1] > nums[nums.Length-2])return nums.Length-1;
-
-            for (int i = 1; i < nums.Length-1; i++)
-            {
-                if (nums[i - 1] < nums[i] && nums[i + 1] < nums[i]) 
-                    return i;
-            }
-
-            return -1;
-        }
         public ListNode DeleteDuplicates(ListNode head)
         {
             if (head == null) return head;
@@ -90,13 +56,5 @@ namespace leetCrack
 
             return head;
         }
-        public static void Main(string[] args)
-        {
-
-
-        }
-
-       
     }
-   
 }
