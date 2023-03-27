@@ -1,52 +1,61 @@
-﻿
-
-using System.Linq;
-using static LeetCrackToLifeGoal.MergeKListss;
-
-namespace leetCrack
+﻿namespace leetCrack
 {
 
     public class Program
     {
 
-        public static int MinSubArrayLen(int target, int[] nums)
+        public int[][] IntervalIntersection(int[][] firstList, int[][] secondList)
         {
-            var right = 0;
-            var left = 0;
-            var sum = 0;
-            var count = nums.Length+1;
-            var store = (nums[0]);
-            while (true)
+            var firstAvaiable = new List<int>();
+            var answer = new List<List<int>>();
+            foreach (var range in firstList)
             {
-                if (target > store)
+                for (int i = range[0]; i <= range[1]; i++)
                 {
-                    if (right >= nums.Length - 1) break;
-                    right++;
-                    store+=(nums[right]);
+                    firstAvaiable.Add(i);
                 }
-                else
+            }
+            var createRange = new List<int>();
+            foreach (var range in secondList)
+            {
+                for (int i = range[0]; i <= range[1]; i++)
                 {
-                    if ((right - left + 1) < count)
+                    if (firstAvaiable.Contains(i) && createRange.Count == 0)
                     {
-                        count = right - left + 1;
-                        if (count == 1) return count;
-
+                       createRange.Add(i);
                     }
-                   
-                    store-=nums[left];
-                    left++;
+
+                    if (!firstAvaiable.Contains(i) && createRange.Count > 0)
+                    {
+                        createRange.Add(i-1);
+                        var newArr = new List<int>();
+                        createRange.ForEach(x=>newArr.Add(x));
+                        answer.Add(newArr);
+                        createRange.Clear();
+                    }
                 }
 
+                if (createRange.Count == 1)
+                {
+                    createRange.Add(createRange[0]);
+                    var newArr = new List<int>();
+                    createRange.ForEach(x => newArr.Add(x));
+                    answer.Add(newArr);
+                    createRange.Clear();
+                }
+            }
+            var answerData = new int[answer.Count][];
+            for (int i = 0; i < answer.Count; i++)
+            {
+                answerData[i] = answer[i].ToArray();
             }
 
-            if (count > nums.Length) return 0;
-            return count;
+            return answerData;
         }
-
         public static void Main(string[] args)
         {
 
-            MinSubArrayLen(7, new int[] { 2, 3, 1, 2, 4, 3 });
+           
         }
 
        
