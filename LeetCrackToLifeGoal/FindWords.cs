@@ -91,60 +91,7 @@ namespace leetCrack
 
         static IDictionary<int, IList<string>> dp;
 
-        //public static IList<string> FindWordss(char[][] board, string[] words)
-        //{
-        //    int m = board.Length;
-        //    int n = board[0].Length;
-        //    List<string> res = new();
 
-        //    //build trie
-        //    Node root = new();
-        //    foreach (var word in words)
-        //    {
-        //        Node node = root;
-        //        foreach (var c in word)
-        //        {
-        //            if (node.Next[c] == null) node.Next[c] = new Node();
-        //            node = node.Next[c];
-        //        }
-
-        //        node.Word = word;
-        //    }
-
-        //    //do dfs
-        //    for (int i = 0; i < m; i++)
-        //    {
-        //        for (int j = 0; j < n; j++)
-        //        {
-        //            Dfs(i, j, root);
-        //        }
-        //    }
-
-        //    return res;
-
-        //    void Dfs(int i, int j, Node node)
-        //    {
-
-
-        //        if (i < 0 || j < 0 || i == m || j == n) return;
-        //        char c = board[i][j];
-        //        if (c == '/' || node.Next[c] is null) return;
-        //        node = node.Next[c];
-
-        //        if (node.Word is not null)
-        //        {
-        //            res.Add(node.Word);
-        //            node.Word = null;
-        //        }
-
-        //        board[i][j] = '/';
-        //        Dfs(i - 1, j, node);
-        //        Dfs(i, j - 1, node);
-        //        Dfs(i + 1, j, node);
-        //        Dfs(i, j + 1, node);
-        //        board[i][j] = c;
-        //    }
-        //}
         public static void Mains(string[] args)
         {
             var words = new string[] { "oath", "pea", "eat", "rain" };
@@ -154,6 +101,39 @@ namespace leetCrack
             //var words = new string[]{}
             //FindWordss(data, words);
             //FindWordss(data, words);
+
+            var node = new Node()
+            {
+                right = new Node()
+                {
+                    right = new Node()
+                    {
+                        val = 7,
+                        right = null,
+                        left = null,
+                    },
+                    left = null,
+                    val = 3
+                },
+                left = new Node()
+                {
+                    val = 2,
+                    right = new Node()
+                    {
+                        val = 5,
+                        right = null,
+                        left = null,
+                    },
+                    left = new Node()
+                    {
+                        val = 4,
+                        right = null,
+                        left = null,
+                    },
+
+                },
+                val = 1
+            };
         }
 
     }
