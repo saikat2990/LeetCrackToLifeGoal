@@ -1,11 +1,12 @@
-﻿
-using LeetCrackToLifeGoal;
-using static leetCrack.FindWords;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace leetCrack
+namespace LeetCrackToLifeGoal
 {
-
-    public class Program
+    internal class LengthOfLISS
     {
         public int LengthOfLIS(int[] nums)
         {
@@ -35,17 +36,5 @@ namespace leetCrack
 
             return val;
         }
-
-        public int FindNumberOfLIS(int[] nums)
-        {
-
-        }
-
-        public static void Main(string[] args)
-        {
-        }
-
-       
     }
-   
 }
