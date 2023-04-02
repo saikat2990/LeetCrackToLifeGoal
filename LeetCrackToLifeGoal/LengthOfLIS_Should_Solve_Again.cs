@@ -1,16 +1,16 @@
-﻿
-using LeetCrackToLifeGoal;
-using static leetCrack.FindWords;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace leetCrack
+namespace LeetCrackToLifeGoal
 {
-
-    public class Program
+    internal class LengthOfLIS_Should_Solve_Again
     {
-
         public int LengthOfLIS(int[] nums)
         {
-            
+
             var lenSum = new int[nums.Length][];
             lenSum[0] = new[] { 1, 1 };
             var maxLen = 1;
@@ -44,13 +44,5 @@ namespace leetCrack
 
             return lenSum.Sum(v => v[0] == maxLen ? v[1] : 0);
         }
-
-        public static void Main(string[] args)
-        {
-            
-        }
-
-       
     }
-   
 }
