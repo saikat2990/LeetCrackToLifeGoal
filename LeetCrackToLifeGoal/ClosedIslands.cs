@@ -14,32 +14,19 @@ namespace LeetCrackToLifeGoal
             var cols = grid[0].Length;
             if (rows <= row || cols <= col || row < 0 || col < 0)
             {
-
                 return;
-
             }
             else
             {
-
                 if (grid[row][col] == 0)
                 {
-
                     zeros.Add(0);
                     valueTuples.Add((row, col));
                     grid[row][col] = -1;
-
                     traverAndStoreData(grid, zeros, row + 1, col, valueTuples);
-
-
-
                     traverAndStoreData(grid, zeros, row, col + 1, valueTuples);
-
                     traverAndStoreData(grid, zeros, row - 1, col, valueTuples);
-
-
                     traverAndStoreData(grid, zeros, row, col - 1, valueTuples);
-
-
                 }
             }
 
