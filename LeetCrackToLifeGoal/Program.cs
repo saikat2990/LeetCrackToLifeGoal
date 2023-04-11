@@ -29,41 +29,51 @@ namespace leetCrack
             return answer.Count;
         }
 
-        public static bool IsValid(string s)
+        public static string RemoveStars(string s)
         {
-            var firstBracket = new List<char> { '(', '{', '[' };
-            var secondBracket = new List<char> { ')', '}', ']' };
-            var stack = new Stack<char>();
-            for (int i = 0; i < s.Length; i++)
+            for (int i = s.Length-1; i >=0; i--)
             {
-                if (firstBracket.Contains(s[i]))
+                if (s[i] == '*')
                 {
-                    stack.Push(s[i]);
-                }
-                else
-                {
-                    Console.WriteLine(stack.Peek());
-                    var findIndex = firstBracket.Contains(stack.Peek())
-                        ? secondBracket.FindIndex(x=>x==s[i])
-                        : -1;
-                    if (findIndex !=-1 && secondBracket.Contains(s[i]) && firstBracket[findIndex] == stack.Peek())
+                    var count = 0;
+                    var index = i ;
+                   
+                    while (s[index]=='*')
                     {
-                        stack.Pop();
+                      
+                        if (index == 0) return "";
+                        index--;
+                        count++;
                     }
 
-                   else
+                    for (int j = 0; j < count; j++)
                     {
-                        return false;
+
+                        if (index == 0) return "";
+                        char[] charArr = s.ToCharArray();
+                        charArr[index] = ' '; // freely modify the array
+                        charArr[i - j] = ' ';
+                        s = new string(charArr);
+                        index--;
                     }
+
+                    i = index;
                 }
             }
 
-            if (stack.Count > 0) return false;
-            return true;
+            var str = "";
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] != ' ')
+                {
+                    str += s[i];
+                }
+            }
+            return str;
         }
         public static void Main(string[] args)
         {
-            IsValid("()[]{}");
+            RemoveStars("abb*cdfg*****x*");
             //NumDecodings("225");
         }
 
