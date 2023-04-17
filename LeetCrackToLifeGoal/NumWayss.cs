@@ -1,11 +1,12 @@
-﻿
-using LeetCrackToLifeGoal;
-using static leetCrack.FindWords;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace leetCrack
+namespace LeetCrackToLifeGoal
 {
-
-    public class Program
+    internal class NumWayss
     {
         public static int NumWays(string[] words, string target)
         {
@@ -38,14 +39,5 @@ namespace leetCrack
             return (int)dp[m, k];
         }
 
-        public static void Main(string[] args)
-        {
-            NumWays(new string[] { "acca", "bbbb", "caca" }, "aba");
-
-
-        }
-
-       
     }
-   
 }
