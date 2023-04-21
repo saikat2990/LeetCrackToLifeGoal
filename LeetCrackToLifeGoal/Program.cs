@@ -7,40 +7,38 @@ namespace leetCrack
 
     public class Program
     {
-        public static int NumWays(string[] words, string target)
+        private int max = 0;
+
+        public void traverseZigZag(int count, TreeNode node, bool left)
         {
-            int alphabet = 26;
-            int mod = 1000000007;
-            int m = target.Length, k = words[0].Length;
-            int[,] cnt = new int[alphabet, k];
-            for (int j = 0; j < k; j++)
+            if (node == null)
             {
-                foreach (string word in words)
-                {
-                    cnt[word[j] - 'a', j]++;
-                }
+                if (max < count) max = count;
+                return;
             }
-            long[,] dp = new long[m + 1, k + 1];
-            dp[0, 0] = 1;
-            for (int i = 0; i <= m; i++)
+
+            if (left)
             {
-                for (int j = 0; j < k; j++)
-                {
-                    if (i < m)
-                    {
-                        dp[i + 1, j + 1] += cnt[target[i] - 'a', j] * dp[i, j];
-                        dp[i + 1, j + 1] %= mod;
-                    }
-                    dp[i, j + 1] += dp[i, j];
-                    dp[i, j + 1] %= mod;
-                }
+                traverseZigZag(count + 1, node.right, false);
+                traverseZigZag(0, node.left, true);
             }
-            return (int)dp[m, k];
+            else
+            {
+                traverseZigZag(count + 1, node.left, true);
+                traverseZigZag(0, node.right, false);
+            }
         }
 
+        public int LongestZigZag(TreeNode root)
+        {
+            traverseZigZag(0, root.right, false);
+            traverseZigZag(0, root.left, true);
+            return max;
+
+        }
         public static void Main(string[] args)
         {
-            NumWays(new string[] { "acca", "bbbb", "caca" }, "aba");
+            
 
 
         }
