@@ -1,13 +1,14 @@
-﻿
-using LeetCrackToLifeGoal;
-using static leetCrack.FindWords;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using leetCrack;
 
-namespace leetCrack
+namespace LeetCrackToLifeGoal
 {
-
-    public class Program
+    internal class AllPossibleFBTs
     {
-
         public static IList<TreeNode> AllPossibleFBT(int N)
         {
             var Res = allFBT(N);
@@ -45,12 +46,5 @@ namespace leetCrack
 
             return res;
         }
-        public static void Main(string[] args)
-        {
-            AllPossibleFBT(7);
-        }
-
-       
     }
-   
 }
