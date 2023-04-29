@@ -1,11 +1,12 @@
-﻿
-using LeetCrackToLifeGoal;
-using static leetCrack.FindWords;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace leetCrack
+namespace LeetCrackToLifeGoal
 {
-
-    public class Program
+    internal class NumSimilarGroupss
     {
         //public static bool isMismatchMoreThan2(string str1, string str2)
         //{
@@ -113,16 +114,5 @@ namespace leetCrack
             }
             return true;
         }
-        public static void Main(string[] args)
-        {
-            NumSimilarGroups(new string[]
-            {
-                "ajdidocuyh", "djdyaohuic", "ddjyhuicoa", "djdhaoyuic", "ddjoiuycha", "ddhoiuycja", "ajdydocuih",
-                "ddjiouycha", "ajdydohuic", "ddjyouicha"
-            });
-        }
-
-       
     }
-   
 }
