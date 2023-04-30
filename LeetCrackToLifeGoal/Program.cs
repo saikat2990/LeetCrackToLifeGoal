@@ -7,122 +7,80 @@ namespace leetCrack
 
     public class Program
     {
-        //public static bool isMismatchMoreThan2(string str1, string str2)
-        //{
-
-        //    var count = 0;
-        //    for (int i = 0; i < str1.Length; i++)
-        //    {
-        //        if (str1[i] != str2[i])
-        //        {
-        //            count++;
-        //            if (count > 2) return false;
-        //        }
-        //    }
-        //    return true;
-        //}
-
-        //public static int NumSimilarGroups(string[] strs)
-        //{
-        //    if (strs.Length == 0) return 0;
-        //    var dict = new Dictionary<string, int>();
-        //    var uni = 1;
-        //    dict.Add(strs[0],uni);
-        //    for (int i = 0; i < strs.Length; i++)
-        //    {
-        //        var isFound = false;
-        //        for (int j = i+1; j < strs.Length; j++)
-        //        {
-        //            if (isMismatchMoreThan2(strs[i], strs[j]))
-        //            {
-        //                isFound = true;
-
-        //                if (!dict.ContainsKey(strs[j]) && dict.ContainsKey(strs[i]))
-        //                {
-        //                    dict.Add(strs[j], dict[strs[i]]);
-        //                }
-
-
-        //            }
-
-        //        }
-
-        //        if (!isFound && !dict.ContainsKey(strs[i]))
-        //        {
-        //            uni++;
-        //            dict.Add(strs[i], uni);
-
-        //        }
-        //    }
-
-        //    return uni;
-        //}
-        public static int NumSimilarGroups(string[] strs)
+        public static int MaxNumEdgesToRemove(int n, int[][] edges)
         {
-            var graph = CreateGraph(strs);
-            var aux = new int[strs.Length];
-            var rs = 0;
-            for (int i = 0; i < aux.Length; i++)
-            {
-                if (aux[i] == 0)
-                {
-                    rs++;
-                    NumSimilarGroupsDfs(rs, i, aux, graph);
-                }
-            }
-            return rs;
-        }
-        private static void NumSimilarGroupsDfs(int id, int index, int[] aux, List<int>[] graph)
-        {
-            aux[index] = id;
-            for (int i = 0; i < graph[index].Count; i++)
-            {
-                if (aux[graph[index][i]] == 0) NumSimilarGroupsDfs(id, graph[index][i], aux, graph);
-            }
-        }
-        private static List<int>[] CreateGraph(string[] strs)
-        {
-            var rs = new List<int>[strs.Length];
-            for (int i = 0; i < rs.Length; i++)
-            {
-                rs[i] = new List<int>();
-            }
-            for (int i = 0; i < strs.Length - 1; i++)
-            {
-                for (int j = i + 1; j < strs.Length; j++)
-                {
-                    if (DifferIn2Chars(strs[i], strs[j]))
-                    {
-                        rs[i].Add(j);
-                        rs[j].Add(i);
-                    }
-                }
-            }
-            return rs;
-        }
-        private static bool DifferIn2Chars(string str0, string str1)
-        {
+            UnionFind ufAlice = new UnionFind(n);
+            UnionFind ufBob = new UnionFind(n);
+            bool[] aliceAll = new bool[n];
+            bool[] bobAll = new bool[n];
             var count = 0;
-            for (int i = 0; i < str0.Length; i++)
+            for (int i = 0; i < edges.Length; i++)
             {
-                if (str0[i] != str1[i])
+                if (edges[i][0] == 1)
                 {
-                    count++;
-                    if (count > 2) return false;
+                    if (ufAlice.Find(edges[i][1]-1) == ufAlice.Find(edges[i][2]-1))
+                    {
+                        count++;
+                    }
+                    else
+                    {
+                        ufAlice.Union(edges[i][1]-1, edges[i][2] - 1);
+                        aliceAll[edges[i][1] - 1] = true;
+                        aliceAll[edges[i][2] - 1] = true;
+                    }
+
+                   
+                }
+                if (edges[i][0] == 2)
+                {
+                    if (ufBob.Find(edges[i][1]-1) == ufBob.Find(edges[i][2] - 1))
+                    {
+                        count++;
+                    }
+                    else
+                    {
+                        ufBob.Union(edges[i][1] - 1, edges[i][2] - 1);
+                        bobAll[edges[i][1] - 1] = true;
+                        bobAll[edges[i][2] - 1] = true;
+                    }
+                  
+                }
+                if (edges[i][0] == 3)
+                {
+                    if (ufAlice.Find(edges[i][1] - 1) == ufAlice.Find(edges[i][2] - 1) && ufBob.Find(edges[i][1] - 1) == ufBob.Find(edges[i][2] - 1))
+                    {
+                        count++;
+                    }
+                    else
+                    {
+                        ufAlice.Union(edges[i][1] - 1, edges[i][2] - 1);
+                        ufBob.Union(edges[i][1] - 1, edges[i][2] - 1);
+                        aliceAll[edges[i][1] - 1] = true;
+                        aliceAll[edges[i][2] - 1] = true;
+                        bobAll[edges[i][1] - 1] = true;
+                        bobAll[edges[i][2] - 1] = true;
+                    }
+                   
                 }
             }
-            return true;
+
+            for (int i = 0; i < n; i++)
+            {
+                if (!aliceAll[i] || !bobAll[i]) return -1;
+            }
+
+            return count;
         }
         public static void Main(string[] args)
         {
-            NumSimilarGroups(new string[]
+            MaxNumEdgesToRemove(4, new int[6][]
             {
-                "ajdidocuyh", "djdyaohuic", "ddjyhuicoa", "djdhaoyuic", "ddjoiuycha", "ddhoiuycja", "ajdydocuih",
-                "ddjiouycha", "ajdydohuic", "ddjyouicha"
+                new[] { 3, 1, 2 }, new[] { 3, 2, 3 }, new[] { 1, 1, 3 }, new[] { 1, 2, 4 }, new[] { 1, 1, 2 },
+                new[] { 2, 3, 4 }
             });
         }
 
-       
+      
     }
    
 }
