@@ -7,9 +7,10 @@ namespace leetCrack
 
     public class Program
     {
+      
         public static void Main(string[] args)
         {
-            
+           // SmallestEquivalentString("dfeffdfafbbebbebacbbdfcfdbcacdcbeeffdfebbdebbdafff", "adcdfabadbeeafeabbadcefcaabdecabfecffbabbfcdfcaaae", "myickvflcpfyqievitqtwvfpsrxigauvlqdtqhpfugguwfcpqv");
         }
 
       
