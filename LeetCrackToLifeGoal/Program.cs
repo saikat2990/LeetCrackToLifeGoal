@@ -8,8 +8,7 @@ namespace leetCrack
 {
     public class Program
     {
-
-        public static void Main(string[] args)
+       public static void Main(string[] args)
         {
             //MaxSlidingWindow(new int[]{ 1, 3, -1, -3, 5, 3, 6, 7 },3);
             //var data = EventualSafeNodes(new int[7][]
